@@ -122,21 +122,17 @@ title: survey
         body: JSON.stringify(formData)
     })
     .then(response => {
-        // Error handling
         if (response.status !== 200) {
             const errorMsg = 'Survey data response error: ' + response.status;
             console.log(errorMsg);
             return;
         }
-        // Parse JSON response
         response.json().then(data => {
             console.log('Survey data:', data);
-            // Display survey data in HTML element
-            //document.getElementById('surveyData').innerHTML = `Survey data: ${JSON.stringify(data)}`;
+            
         });
     })
     .catch(err => {
-        // Error handling
         console.error('Error fetching survey data:', err);
     });
 }
