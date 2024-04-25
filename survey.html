@@ -29,7 +29,7 @@ title: survey
     </div>
     <div class="success-message" id="successMessage">Processing your input...</div>
     <header>
-        <h1>Colby Survey Salaries</h1>
+        <h1>Jobly Survey Salaries</h1>
     </header>
     <div class="container">
         <div class="survey-container" id="surveyContainer">
@@ -92,6 +92,7 @@ title: survey
                     <label for="problemSolvingNo">No</label>
                 </div>
                 <button type="submit" class="button">Submit Survey</button>
+                <div id="jobsuggest"></div>
             </form>
         </div>
     </div>
@@ -121,27 +122,32 @@ title: survey
         },
         body: JSON.stringify(formData)
     })
+    
     .then(response => {
         if (response.status !== 200) {
             const errorMsg = 'Survey data response error: ' + response.status;
             console.log(errorMsg);
             return;
         }
-        response.json().then(data => {
-            console.log('Survey data:', data);
-            
-        });
+        console.log(response);
+    response.json().then(data => {
+    console.log("response data", data);
+    const jobSuggested = data.jobsuggested; 
+    const html_str = `<label>Job Suggested:</label><label>${jobSuggested}</label>`; 
+    document.getElementById("jobsuggest").innerHTML = html_str;
+});
+
     })
     .catch(err => {
         console.error('Error fetching survey data:', err);
     });
 }
-
-
         
         function suggestJob(job) {
             alert(job);
         }
+        
     </script>
-</body>
+</body> 
 </html>
+
