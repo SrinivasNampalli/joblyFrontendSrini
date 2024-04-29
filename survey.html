@@ -10,14 +10,14 @@ title: survey
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NoblySurveyRecommendation</title>
     <style>
-        /* CSS styles */
+        
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #F4F4F4;
         }
-        /* Add other CSS styles as needed */
+        
     </style>
 </head>
 <body>
@@ -129,13 +129,13 @@ title: survey
             console.log(errorMsg);
             return;
         }
-        console.log(response);
-    response.json().then(data => {
-    console.log("response data", data);
-    const jobSuggested = data.jobsuggested; 
-    const html_str = `<label>Job Suggested:</label><label>${jobSuggested}</label>`; 
-    document.getElementById("jobsuggest").innerHTML = html_str;
-});
+        console.log("Response",response);
+        response.json().then(data => {
+            console.log("response data", data);
+            const jobSuggested = data.jobsuggested; 
+            const html_str = `<label>Job Suggested:</label><label>${jobSuggested}</label>`; 
+            document.getElementById("jobsuggest").innerHTML = html_str;
+        });
 
     })
     .catch(err => {
